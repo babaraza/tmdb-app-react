@@ -10,7 +10,7 @@ function App() {
   const handleClick = (e) => {
     const search_type = e.currentTarget.id;
     const base_url = "https://api.themoviedb.org/3/movie";
-    const api_key = "d0e71c5692e4c58530e1a7b168b96e64";
+    const api_key = process.env.REACT_APP_TMDB_API;
 
     setHeading(e.target.innerText);
 
@@ -21,7 +21,7 @@ function App() {
 
   useEffect(() => {
     fetch(
-      "https://api.themoviedb.org/3/movie/popular?api_key=d0e71c5692e4c58530e1a7b168b96e64"
+      `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API}`
     )
       .then((response) => response.json())
       .then((json) => setMovies(json.results));
